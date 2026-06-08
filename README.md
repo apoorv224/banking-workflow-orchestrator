@@ -1,29 +1,31 @@
 # 🏦 Banking Workflow Orchestrator
 An LLM-powered workflow orchestration engine for intelligent banking automation
-
 A production-style AI-driven backend system built with FastAPI, Llama 3.1 (Ollama), and a modular execution architecture. This engine demonstrates how modern banking platforms can automate internal operations using LLM reasoning, workflow planning, policy enforcement, tool execution, audit logging, and human approval gates.
-
+```
 Natural language input → Structured banking workflows → Safe, step-by-step execution with full traceability.
+```
 
 ## 📋 Table of Contents
-How It Works
-Core Capabilities
-Supported Intents
-Architecture Overview
-Example Workflow
-Tool System
-Human Approval Flow
-State & Audit System
-API Reference
-Project Structure
-Setup Instructions
-Design Principles
-Future Enhancements
+```
+1. How It Works
+2. Core Capabilities
+3. Supported Intents
+4. Architecture Overview
+5. Example Workflow
+6. Tool System
+7. Human Approval Flow
+8. State & Audit System
+9. API Reference
+10. Project Structure
+11. Setup Instructions
+12. Design Principles
+13. Future Enhancements
+```
 
 ## 🧠 How It Works
 
 The system follows a complete LLM-to-execution pipeline:
-
+```
 User Input
     ↓
 Intent Detection (LLM)
@@ -39,30 +41,31 @@ Tool Execution Engine
 State Management + Audit Logging
     ↓
 Response or Human Approval
-
+```
 Every request passes through controlled stages ensuring safety, traceability, and deterministic execution—even when LLMs are involved.
-
 
 ## 🚀 Core Capabilities
 Feature	Description:
 
-LLM Intent Detection: Understands natural language requests using Llama 3.1
-Dynamic Workflow Generation	Creates execution plans based on detected intent
-Policy Enforcement	ALLOW / DENY / REQUIRE APPROVAL decisions
-Tool Execution Engine	Runs banking operations (KYC, accounts, loans, notifications)
-Human Approval Gates	Pauses sensitive workflows for manual review
-State Persistence	SQLite-backed workflow state tracking
-Audit Logging	Complete event history for every system action
-Resume Capability	Paused workflows can be resumed after approval
+- LLM-based intent detection using Llama 3.1
+- Dynamic workflow generation based on intent
+- Policy-based decision making (ALLOW / DENY / REQUIRE APPROVAL)
+- Tool execution engine for banking operations like:
+  KYC verification, account creation, loan processing, and notifications
+- Human approval system for sensitive workflows like loans
+- Persistent workflow state tracking using SQLite
+- Full audit logging of every system event
+- Resume capability for paused workflows
 
 
 ## 🎯 Supported Intents
 
-The system currently recognizes three primary intents:
-Intent	Description
-ACCOUNT_OPENING	New bank account creation workflow
-LOAN_APPLICATION	Loan request processing with eligibility checks
-KYC_UPDATE	Customer identity verification updates
+The system currently understands:
+
+- ACCOUNT_OPENING
+- LOAN_APPLICATION
+- KYC_UPDATE
+
 Each intent triggers a different workflow with dynamically generated steps.
 
 
@@ -124,23 +127,22 @@ The system executes:
 7	Completion: Stores final state + logs all events
 
 ## 🔧 Tool System
-The registry-based tool execution layer includes these banking operations:
-
-kyc_check: Verify customer identity
-create_account: Open new bank account
-send_welcome_email: Customer onboarding notification
-loan_eligibility_check: Assess loan qualification
-credit_check: Review credit history
-risk_assessment: Evaluate application risk
-create_loan_application: Initialize loan record
-approve_loan: Final loan approval
-update_kyc: Modify KYC information
-notify_customer: Send status notifications
-Each tool executes in a controlled environment with comprehensive error handling.
+The system uses a registry-based tool execution layer with banking operations such as:
+- kyc_check
+- create_account
+- send_welcome_email
+- loan_eligibility_check
+- credit_check
+- risk_assessment
+- create_loan_application
+- approve_loan
+- update_kyc
+- notify_customer
+Each tool is executed safely in a controlled environment with error handling.
 
 ## 👤 Human Approval Flow
 Sensitive operations (especially LOAN_APPLICATION) require manual approval:
-
+```
 Workflow Starts
       ↓
 System Pauses at Approval Gate
@@ -152,25 +154,27 @@ POST /approve/{workflow_id}
 Execution Resumes
       ↓
 Completion Logged
+```
 
 ## 📊 State & Audit System
-State Management (SQLite)
-Persists workflow data:
+The system maintains full traceability using:
 
-workflow_id — Unique identifier
-intent — Detected user intent
-execution_status — Current state (running/paused/completed)
-completed_steps — List of finished operations
-Audit Logging
+### State Management (SQLite)
+Stores:
+- workflow_id
+- intent
+- execution status
+- completed steps
 
-Tracks all system events:
+### Audit Logging
+Tracks:
+- WORKFLOW_STARTED
+- INTENT_DETECTED
+- POLICY_CHECK
+- WORKFLOW_PLANNED
+- TOOL_EXECUTION
+- WORKFLOW_COMPLETED
 
-WORKFLOW_STARTED
-INTENT_DETECTED
-POLICY_CHECK
-WORKFLOW_PLANNED
-TOOL_EXECUTION
-WORKFLOW_COMPLETED
 
 ## 🏗️ Project Structure
 ```
@@ -217,12 +221,11 @@ Open your browser to:
 [127.0.0.1](http://127.0.0.1:8000/docs)
 
 ## 🔐 Design Principles
-Principle	Implementation
-LLM for reasoning only	LLMs classify and plan—never execute directly
-Deterministic execution	Tool layer is predictable and safe
-Fault tolerance	Failures never crash workflows
-Full traceability	Every action logged via audit system
-Human oversight	Critical operations require manual approval
+LLM is used only for reasoning, not execution
+Execution layer is deterministic and safe
+Failures never crash workflows
+Every action is traceable via audit logs
+Human approval is enforced for critical operations
 
 ## 🔮 Future Enhancements
  Redis-based distributed state management
