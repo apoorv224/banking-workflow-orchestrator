@@ -117,7 +117,7 @@ When a user sends:
 apply for loan
 
 The system executes:
-
+```
 1	Intent Detection: LOAN_APPLICATION
 2	Policy Check: Allowed / Requires Approval
 3	Workflow Planning: kyc_check → loan_eligibility_check → create_loan_application
@@ -125,7 +125,7 @@ The system executes:
 5	Approval Gate: Pauses for human approval (if required)
 6	Resume: Continues after admin approval
 7	Completion: Stores final state + logs all events
-
+```
 ## 🔧 Tool System
 The system uses a registry-based tool execution layer with banking operations such as:
 - kyc_check
