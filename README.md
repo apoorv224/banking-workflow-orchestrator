@@ -4,7 +4,6 @@ An LLM-powered workflow orchestration engine for intelligent banking automation
 A production-style AI-driven backend system built with FastAPI, Llama 3.1 (Ollama), and a modular execution architecture. This engine demonstrates how modern banking platforms can automate internal operations using LLM reasoning, workflow planning, policy enforcement, tool execution, audit logging, and human approval gates.
 
 Natural language input → Structured banking workflows → Safe, step-by-step execution with full traceability.
----
 
 ## 📋 Table of Contents
 How It Works
@@ -20,7 +19,6 @@ Project Structure
 Setup Instructions
 Design Principles
 Future Enhancements
---- 
 
 ## 🧠 How It Works
 
@@ -43,7 +41,7 @@ State Management + Audit Logging
 Response or Human Approval
 
 Every request passes through controlled stages ensuring safety, traceability, and deterministic execution—even when LLMs are involved.
---- 
+
 
 ## 🚀 Core Capabilities
 Feature	Description:
@@ -56,7 +54,7 @@ Human Approval Gates	Pauses sensitive workflows for manual review
 State Persistence	SQLite-backed workflow state tracking
 Audit Logging	Complete event history for every system action
 Resume Capability	Paused workflows can be resumed after approval
----
+
 
 ## 🎯 Supported Intents
 
@@ -66,7 +64,7 @@ ACCOUNT_OPENING	New bank account creation workflow
 LOAN_APPLICATION	Loan request processing with eligibility checks
 KYC_UPDATE	Customer identity verification updates
 Each intent triggers a different workflow with dynamically generated steps.
----
+
 
 ## 🏛️ Architecture Overview
 
@@ -107,7 +105,6 @@ Each intent triggers a different workflow with dynamically generated steps.
 ┌─────────────────────────────────────────────────────────────┐
 │            Final Response / Approval Flow                   │
 └─────────────────────────────────────────────────────────────┘
----
 
 ## ⚙️ Example Workflow
 
@@ -123,7 +120,6 @@ The system executes:
 5	Approval Gate: Pauses for human approval (if required)
 6	Resume: Continues after admin approval
 7	Completion: Stores final state + logs all events
----
 
 ## 🔧 Tool System
 The registry-based tool execution layer includes these banking operations:
@@ -139,7 +135,6 @@ approve_loan: Final loan approval
 update_kyc: Modify KYC information
 notify_customer: Send status notifications
 Each tool executes in a controlled environment with comprehensive error handling.
----
 
 ## 👤 Human Approval Flow
 Sensitive operations (especially LOAN_APPLICATION) require manual approval:
@@ -155,7 +150,6 @@ POST /approve/{workflow_id}
 Execution Resumes
       ↓
 Completion Logged
----
 
 ## 📊 State & Audit System
 State Management (SQLite)
@@ -175,7 +169,6 @@ POLICY_CHECK
 WORKFLOW_PLANNED
 TOOL_EXECUTION
 WORKFLOW_COMPLETED
----
 
 ## 🏗️ Project Structure
 
@@ -192,7 +185,6 @@ app/
 ├── workflow/        # Workflow planning and orchestration
 └── models/          # Pydantic data models
 main.py              # Application entry point
----
 
 ## ⚙️ Setup Instructions
 Prerequisites:
@@ -220,7 +212,6 @@ uvicorn app.main:app --reload
 Access the API
 Open your browser to:
 [127.0.0.1](http://127.0.0.1:8000/docs)
----
 
 ## 🔐 Design Principles
 Principle	Implementation
@@ -229,7 +220,6 @@ Deterministic execution	Tool layer is predictable and safe
 Fault tolerance	Failures never crash workflows
 Full traceability	Every action logged via audit system
 Human oversight	Critical operations require manual approval
----
 
 ## 🔮 Future Enhancements
  Redis-based distributed state management
@@ -239,8 +229,6 @@ Human oversight	Critical operations require manual approval
  Docker + Kubernetes deployment
  Prometheus + Grafana observability
  Multi-LLM support (GPT / Claude / Llama)
----
 
 ## 🤝 Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
----
