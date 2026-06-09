@@ -138,6 +138,7 @@ The system uses a registry-based tool execution layer with banking operations su
 - approve_loan
 - update_kyc
 - notify_customer
+
 Each tool is executed safely in a controlled environment with error handling.
 
 ## 👤 Human Approval Flow
