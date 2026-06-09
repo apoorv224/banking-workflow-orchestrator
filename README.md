@@ -190,8 +190,8 @@ app/
 ├── policy/          # Policy enforcement logic
 ├── state/           # Workflow state management
 ├── workflow/        # Workflow planning and orchestration
-└── models/          # Pydantic data models
-main.py              # Application entry point
+├──models/          # Pydantic data models
+└──main.py              # Application entry point
 ```
 
 ## ⚙️ Setup Instructions
@@ -220,6 +220,8 @@ uvicorn app.main:app --reload
 Access the API
 Open your browser to:
 [127.0.0.1](http://127.0.0.1:8000/docs)
+
+[127.0.0.1](http://127.0.0.1:8000/dashboard)
 
 ## 🔐 Design Principles
 LLM is used only for reasoning, not execution
